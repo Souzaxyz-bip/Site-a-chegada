@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Chegada</title>
+
+<style>
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FUNDO */
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at center, #050505, #000);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ESTRELAS */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity: 0.25;
+    z-index: -3;
+}
+
+/* PARTÍCULAS */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 70%);
+    animation: pulsar 6s infinite alternate;
+    z-index: -2;
+}
+
+@keyframes pulsar {
+    from { opacity: 0.2; }
+    to { opacity: 0.5; }
+}
+
+/* NAVES */
+.nave {
+    position: fixed;
+    width: 70px;
+    opacity: 0.7;
+    z-index: 2;
+    animation: voar 18s linear infinite;
+    top: 15%;
+    left: -150px;
+}
+
+.nave2 {
+    top: 60%;
+    animation-duration: 25s;
+}
+
+.nave3 {
+    top: 30%;
+    animation-duration: 30s;
+}
+
+/* ETs */
+.et {
+    position: fixed;
+    width: 50px;
+    bottom: 20px;
+    left: 10%;
+    animation: flutuar 4s ease-in-out infinite;
+    z-index: 3;
+}
+
+.et2 {
+    left: 80%;
+}
+
+@keyframes flutuar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* ANIMAÇÃO NAVES */
+@keyframes voar {
+    from { transform: translateX(-200px) translateY(0); }
+    to { transform: translateX(120vw) translateY(-80px); }
+}
+
+/* TOPO */
+.topo {
+    position: fixed;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    letter-spacing: 6px;
+    font-size: 22px;
+    color: #ff3b3b;
+    z-index: 10;
+}
+
+/* BANNER */
+.banner {
+    height: 100vh;
+    background:
+        linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.3)),
+        url("https://upload.wikimedia.org/wikipedia/pt/5/5f/Arrival%2C_film_poster.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+}
+
+/* TEXTO */
+.conteudo {
+    margin-left: 8%;
+    max-width: 500px;
+}
+
+.titulo {
+    font-size: 65px;
+    margin-bottom: 20px;
+    color: #ff3b3b;
+    text-shadow: 0 0 25px rgba(255,0,0,0.8);
+    animation: brilho 2s infinite alternate;
+}
+
+@keyframes brilho {
+    from { text-shadow: 0 0 10px red; }
+    to { text-shadow: 0 0 30px red; }
+}
+
+.descricao {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* SEÇÕES */
+.secao {
+    padding: 60px 10%;
+}
+
+/* TITULOS */
+h2 {
+    color: #ff3b3b;
+    margin-bottom: 20px;
+    border-left: 5px solid red;
+    padding-left: 10px;
+}
+
+/* SINOPSE */
+.sinopse {
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 800px;
+    color: #ccc;
+}
+
+/* CAPA */
+.capa-filme {
+    margin-top: 30px;
+    width: 600px;
+    max-width: 100%;
+    height: 385px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #ff3b3b;
+    box-shadow: 0 0 25px rgba(255,0,0,0.6);
+}
+
+/* PERSONAGENS */
+.personagens {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: linear-gradient(145deg, #111, #1c1c1c);
+    padding: 20px;
+    border-radius: 12px;
+    width: 260px;
+    transition: 0.3s;
+    border: 1px solid #333;
+}
+
+.card:hover {
+    transform: scale(1.07);
+    border-color: red;
+    box-shadow: 0 0 20px red;
+}
+
+.card h3 {
+    color: #ff3b3b;
+    margin-bottom: 10px;
+}
+
+.card small {
+    display: block;
+    margin-top: 10px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* NEBLINA */
+.neblina {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent, black 80%);
+    pointer-events: none;
+}
+
+/* RODAPÉ */
+.rodape {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    color: #777;
+}
+
+/* RESPONSIVO */
+@media(max-width: 768px){
+
+    .titulo{
+        font-size: 42px;
+    }
+
+    .descricao{
+        font-size: 16px;
+    }
+
+    .conteudo{
+        margin: 20px;
+    }
+
+    .personagens{
+        justify-content: center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVES -->
+<img class="nave" src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" alt="Nave alienígena">
+<img class="nave nave2" src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" alt="Nave alienígena">
+<img class="nave nave3" src="https://cdn-icons-png.flaticon.com/512/3212/3212608.png" alt="Nave alienígena">
+
+<!-- ETs -->
+<img class="et" src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="ET">
+<img class="et et2" src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="ET">
+
+<div class="topo">A CHEGADA</div>
+
+<div class="banner">
+
+    <img
+        src="image(1).png"
+        alt="Capa do filme A Chegada"
+        style="width: 600px; max-width: 45%; height: 385px; object-fit: cover; border-radius: 15px; border: 2px solid #ff3b3b; box-shadow: 0 0 25px rgba(255,0,0,0.6);">
+
+    <div class="conteudo">
+        <div class="titulo">VOCÊ ESTÁ PRONTO?</div>
+        <div class="descricao">
+            O contato com o desconhecido pode mudar a forma como vemos o tempo, a vida e a humanidade.
+        </div>
+    </div>
+</div>
+
+<div class="neblina"></div>
+
+<div class="secao" style="margin-top: -120px; position: relative; z-index: 5;">
+    <h2>Enredo</h2>
+    <p class="sinopse">
+        A filha da linguista Louise Banks, Hannah, morre aos doze anos de uma doença incurável.
+        <br><br>
+        Doze naves espaciais extraterrestres pairam sobre vários locais ao redor da Terra. No pânico generalizado que se segue, as nações afetadas enviam militares e cientistas para monitorá-las e estudá-las. Nos Estados Unidos, o Coronel Weber recruta Banks e o físico Ian Donnelly para estudar a nave sobre Montana.
+        <br><br>
+        A bordo, Banks e Donnelly fazem contato com dois alienígenas semelhantes a cefalópodes chamados de heptapods. Conforme Banks aprende sua linguagem escrita complexa, ela começa a ter visões do futuro envolvendo sua filha.
+        <br><br>
+        Quando os alienígenas afirmam ter vindo para oferecer uma “arma”, as nações entram em conflito por medo de um ataque. Porém, Banks percebe que a “arma” é, na verdade, a linguagem dos heptapods — uma ferramenta capaz de alterar a percepção humana do tempo.
+        <br><br>
+        Aprender essa linguagem permite enxergar passado, presente e futuro simultaneamente. Usando essa habilidade, Banks impede uma guerra global e descobre que suas visões sobre Hannah eram premonições.
+        <br><br>
+        Mesmo sabendo do destino trágico de sua futura filha e do fim de seu relacionamento com Ian Donnelly, Louise escolhe viver essa história, aceitando cada momento da vida.
+    </p>
+
+</div>
+
+<div class="secao">
+    <h2>Personagens</h2>
+
+    <div class="personagens">
+
+        <div class="card">
+            <h3>Dra. Louise Banks</h3>
+            <p>
+                Uma linguista renomada recrutada pelo exército dos EUA
+                para estabelecer comunicação com os alienígenas.
+            </p>
+            <small>Amy Adams</small>
+        </div>
+
+        <div class="card">
+            <h3>Ian Donnelly</h3>
+            <p>
+                Um físico teórico convocado para trabalhar com Louise
+                e analisar a física por trás da nave e dos alienígenas.
+            </p>
+            <small>Jeremy Renner</small>
+        </div>
+
+        <div class="card">
+            <h3>Coronel Weber</h3>
+            <p>
+                O oficial do alto escalão do exército americano,
+                responsável por liderar a operação no local de pouso em Montana.
+            </p>
+            <small>Forest Whitaker</small>
+        </div>
+
+        <div class="card">
+            <h3>Agente Halpern</h3>
+            <p>
+                Oficial de ligação da CIA que acompanha as operações
+                e pressiona os cientistas por respostas rápidas.
+            </p>
+            <small>Michael Stuhlbarg</small>
+        </div>
+
+        <div class="card">
+            <h3>General Shang</h3>
+            <p>
+                Líder militar chinês envolvido nas decisões globais
+                relacionadas ao contato extraterrestre.
+            </p>
+            <small>Tzi Ma</small>
+        </div>
+
+    </div>
+</div>
+
+<div class="rodape">
+    © 2026 - Site feito por Gabriel, Sophia, Geovana, Ana Vitória, Yasmin Vitória, Maria Cecília 👽
+</div>
+
+</body>
+</html>
+```
